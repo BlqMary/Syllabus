@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <a class="navbar-brand" routerLink="/courses">Syllabus</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" routerLink="/courses">Kursy<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" routerLink="/newCourse" *ngIf="authService.user != null && authService.user.isAdmin">Dodaj</a>
+    </div>
+    <ng-template [ngIf]="authService.user == null"  [ngIfElse]="loggedIn">
+      <div class="navbar-nav ml-auto" >
+          <a class="nav-item nav-link" routerLink="/login">Zaloguj</a>
+          <a class="nav-item nav-link" routerLink="/register">Rejestracja</a>
+      </div>
+    </ng-template>
+    <ng-template #loggedIn>
+      <div class="navbar-nav ml-auto">
+        <a class="nav-item nav-link" (click)="authService.logout()" routerLink="/courses">Wyloguj</a>
+        <a class="nav-item nav-link" routerLink="/user/{{authService.user.email}}">{{authService.user.email}}</a>
+      </div>
+    </ng-template>
+  </div>
+</nav>

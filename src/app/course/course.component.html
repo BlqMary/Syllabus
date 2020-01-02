@@ -1,0 +1,27 @@
+<div *ngIf="course">
+    <div class="jumbotron row">
+        <div class="col-6">
+            <h5 class="display-4">{{course.name}}</h5>
+            <h6 class="lead">
+                {{course.description}}
+                <ngb-rating [(rate)]="rating" [readonly]="!canVote()"></ngb-rating>
+            </h6>
+            <hr my-4>
+            <p class="">
+                ECTS: {{course.ects}}<br>
+                Semestr: {{course.semester}}<br>
+                Typ: {{course.classType}}<br>
+                Ilość miejsc: {{course.maxStudentsCount}}<br>
+                Ocena: {{course.rating}}<br>  
+            </p>
+        <button class="btn btn-warning" (click)="addParticipant()" *ngIf="!isParticipant() && !isCourseFull()">Dołącz</button>
+        <button class="btn btn-warning" (click)="delete()" routerLink="/courses" *ngIf="this.authService.user.isAdmin">Usuń</button>
+        <button class="btn btn-warning"  routerLink="/edit/{{course._id}}" *ngIf="this.authService.user.isAdmin">Edytuj</button>
+        <button class="btn btn-secondary"  routerLink="/courses">Zamknij</button>
+        
+        </div>
+        <div class="col-6">
+            <img src={{course.image}} class="img-fluid">
+        </div>
+    </div>
+</div>  
