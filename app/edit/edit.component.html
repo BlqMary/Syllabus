@@ -1,0 +1,61 @@
+<div class="container">
+
+      <form (ngSubmit)="onSubmit()" #courseForm="ngForm">
+        <div class="form-group">
+          <label for="name">Nazwa Kursu</label>
+          <input type="text" class="form-control" id="name"
+                 [(ngModel)]="course.name" name="name"
+                 #name="ngModel" minlength="1">
+        </div>
+
+        <div class="form-group">
+            <label for="description">Opis Kursu</label>
+            <input type="text" class="form-control" id="description"
+                   [(ngModel)]="course.description" name="description"
+                   #description="ngModel">
+          </div>
+
+          <div class="form-group">
+            <label for="image">Zdjęcie</label>
+            <input type="url" class="form-control" id="image"
+                   [(ngModel)]="course.image" name="image"
+                   #image="ngModel">
+            
+          </div>
+
+        <div class="form-group">
+          <label for="ects">ECTS</label>
+          <input type="number" class="form-control" id="ects"
+                 [(ngModel)]="course.ects" name="ects" min="0">
+        </div>
+
+        <div class="form-group">
+            <label for="semester">Semestr</label>
+            <input type="number" class="form-control" id="semester"
+                   [(ngModel)]="course.semester" name="semester" min="1">                
+        </div>
+
+        <div class="form-group">
+            <label for="maxStudentsCount">Maksymalna liczba studentów</label>
+            <input type="number" class="form-control" id="maxStudentsCount"
+                [(ngModel)]="course.maxStudentsCount" name="maxStudentsCount" min="1">
+        </div>
+  
+        <div class="form-group">
+          <label for="classType">Typ Zajęć</label>
+          <select class="form-control" id="classType"
+                  [(ngModel)]="course.classType" name="classType"
+                  #classType="ngModel">
+            <option *ngFor="let course of coursesType" [value]="course">{{course}}</option>
+          </select>
+        </div>
+  
+        <button type="submit" class="btn btn-warning"> Zapisz </button>
+        <button type="button" class="btn btn-secondary" (click)="courseForm.reset()">Wyczyść</button>
+        <button type="button" class="btn btn-secondary" routerLink="/detail/{{course._id}}">Zamknij</button>
+      </form>
+
+  <div *ngIf="message" class="alert alert-dark"> {{message}} </div>
+
+  </div>
+

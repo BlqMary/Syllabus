@@ -1,0 +1,16 @@
+.jumbotron{
+    border-color: rgb(75, 75, 75);
+    border: solid 1px;
+    margin: 50px 30px;
+    border-radius: 15px;
+}
+
+.img-fluid{
+    max-height: 350px;
+    float:right;
+    border-radius: 15px;
+}
+
+button{
+    margin-right:10px;
+}

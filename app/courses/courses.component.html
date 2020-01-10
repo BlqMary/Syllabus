@@ -1,0 +1,30 @@
+<div class="container" style="margin-top:30px">
+    <div class="row justify-content-center">
+        <app-course-search></app-course-search>
+    </div>
+    <div class="row">
+      <div class="col-12">
+             <div class="row card-group justify-content-center" >   
+                <div style="width: 18rem;"
+                 *ngFor="let course of (courses | courseSearch : searchCourse) | paginate : itemsPerPage : activePage" 
+                 [class.selected]="course !== null"> 
+                    <div class="card" style="margin:10px">
+                       <img src="{{course.image}}" class="card-img-top">
+                      <h5 class="card-header">{{course.name}}</h5>
+                      <button type="button" class="btn btn-warning" routerLink="/detail/{{course._id}}">Pokaż</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container d-flex " style="margin-top: 10px;">
+
+        <div class="p-2">Wyników na stronie</div>
+        <button class="button btn btn-secondary p-2" (click)="changeItemPerPageCount(3)">3</button>
+        <button class="button btn btn-secondary p-2" (click)="changeItemPerPageCount(6)">6</button>
+        <button class="button btn btn-secondary p-2" (click)="changeItemPerPageCount(9)">9</button>
+        <div class="ml-auto p-2" style="margin-top: 15px;">
+            <app-pagination *ngIf="courses" class="pagination" [totalRecords]="courses.length" [recordsPerPage]="itemsPerPage" (onPageChange)="displayActivePage($event)"></app-pagination> 
+        </div>
+</div>
