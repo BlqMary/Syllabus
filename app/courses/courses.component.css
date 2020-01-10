@@ -1,0 +1,18 @@
+.card:nth-child(even){
+    background-color: rgb(224, 206, 122);
+}
+
+.button{
+    margin-right: 5px;
+    height:40px;
+}
+
+.d-flex{
+    align-items: center;
+    border: solid rgb(185, 185, 185);
+    border-width: 1px 0px;
+    margin: 20px auto ;
+    max-width: 800px;
+}
+
+

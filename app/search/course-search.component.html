@@ -1,0 +1,34 @@
+<div class="container ">
+    <div>
+      <form (ngSubmit)="onSubmit()" #courseForm="ngForm" class="row" style="flex-direction: row;">
+        <div class="form-group col-3">
+          <label for="name">Nazwa Kursu</label>
+          <input type="text" class="form-control" id="name"
+                 [(ngModel)]="searchCourse.name" name="name"
+                 #courseName="ngModel">
+        </div>
+
+        <div class="form-group col-2">
+          <label for="ects">ECTS</label>
+          <input type="number" class="form-control" id="ects"
+                 [(ngModel)]="searchCourse.ects" name="ects">
+        </div>
+        
+        <div class="form-group col-2">
+          <label for="semester">Semestr</label>
+          <input type="number" class="form-control" id="semester"
+                 [(ngModel)]="searchCourse.semester" name="semester">
+        </div>
+
+        <div class="form-group col-2">
+          <label for="rating">Ocena</label>
+          <input type="number" class="form-control" id="rating"
+                 [(ngModel)]="searchCourse.rating" name="rating">
+        </div>
+
+        <button type="submit" class="btn btn-warning col-1" [disabled]="!courseForm.form.valid">Szukaj</button>
+        <button type="button" class="btn btn-secondary col-1" (click)="courseForm.reset()">Wyczyść</button>
+      </form>
+    </div>
+  
+  </div>
